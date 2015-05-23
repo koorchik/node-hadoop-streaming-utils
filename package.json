@@ -4,7 +4,7 @@
   "description": "Hadoop streaming utils for NodeJS",
   "main": "lib/hadoop-streaming-utils.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha  --timeout 3000 --ui qunit tests/*"
   },
   "repository": {
     "type": "git",
@@ -12,7 +12,8 @@
   },
   "keywords": [
     "hadoop",
-    "streaming"
+    "streaming",
+    "mapreduce"
   ],
   "author": "koorchik",
   "license": "ISC",
@@ -23,5 +24,9 @@
   "dependencies": {
     "bluebird": "^2.9.25",
     "split": "^0.3.3"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.5"
   }
 }
