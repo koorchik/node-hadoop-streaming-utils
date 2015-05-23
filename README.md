@@ -8,19 +8,70 @@ This is not a framework. This is just set of utils to allow writing hadoop jobs 
 
 ### SYNOPSYS
 ```
+// mapper.js (count word example)
+
 var hadoopUtils = require('hadoop-streaming-utils');
 
-hadoopUtils.iterateJsonLines(function(data) {
-    hadoopUtils.emit();
+hadoopUtils.iterateJsonLines(function(line) {
+    var words = line.split(/\s+/);
+
+    words.forEach(function(word) {
+        hadoopUtils.emit(word, 1);
+    });
 });
 
+// reducer.js
+
+var hadoopUtils = require('hadoop-streaming-utils');
+
+hadoopUtils.iterateKeysWithGroupedJsonValues(function(word, counts) {
+    var totalCount = 0;
+    counts.forEach(function(cnt) {
+        totalCount += cnt;
+    });
+
+    emit(word, totalCount);
+});
+
+// Run (emulate hadoop-streaming behaviour) 
+cat file | node mapper.js | sort -k1,1 | node reducer.js
 ```
 
 ### FUNCTIONS WORKING WITH JSON
 
-* iterateJsonLines
-* iterateKeysWithJsonValues
-* iterateKeysWithGroupedJsonValues
+#### iterateJsonLines
+Will read input line by line and will apply JSON.parse to every line.
+
+```
+hadoopUtils.iterateJsonLines(function(data) {
+
+});
+```
+
+#### iterateKeysWithJsonValues
+1) Reads input line by line. 
+2) Extract key and value from line. 
+3) Apply JSON.parse to value.
+
+```
+hadoopUtils.iterateKeysWithJsonValues(function(key, value) {
+
+});
+```
+
+
+#### iterateKeysWithGroupedJsonValues
+1) Reads input line by line. 
+2) Extract key and value from line. 
+3) Apply JSON.parse to value.
+4) Groups all values by key.
+
+```
+hadoopUtils.iterateKeysWithGroupedJsonValues(function(key, values) {
+
+});
+```
+
 * emit
 
 ### FUNCTIONS WORKING WITH RAW DATA
@@ -31,5 +82,7 @@ hadoopUtils.iterateJsonLines(function(data) {
 * emit
 * incrementCounter
 
+
+### ASYNC OPERATIONS
 
 
