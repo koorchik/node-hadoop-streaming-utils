@@ -3,7 +3,7 @@
 Hadoop streaming utils for NodeJS
 ---------------------------------
 
-A set of utils to allow you writing hadoop jobs easily.
+A set of functions to allow you write hadoop jobs easily.
 
 ### Synopsys
 ```
@@ -38,13 +38,13 @@ See more examples in "examples" folder.
 
 ### Description
 
-There is a set of utils to read and process data line by line. So, next line will be read only after finishing processing previous one. It is easy when your callback is sync. When your callback is async you should return promise from it. Every iterating function returns a promise which will be resolved when all lines were processed. 
+This modules contains a set of utils to read and process data line by line. So, next line will be read only after finishing processing the previous one. It is easy when your callback is synchronous. When your callback is asynchronous you should return a promise from it. Moreover, every iterating function returns a promise which will be resolved after finishing processing all lines. 
 
 ### Functions working with json data
 
 **iterateJsonLines**
 
-Will read input line by line and will apply JSON.parse to every line.
+Will read input line by line and will apply JSON.parse to each line.
 
 ```
 hadoopUtils.iterateJsonLines(function(data) {  });
@@ -74,7 +74,7 @@ hadoopUtils.iterateKeysWithGroupedJsonValues(function(key, values) { });
 
 **emitJson**
 
-Serializes data to JSON and emits it
+Serializes data to JSON and emits it.
 
 ```
 hadoopUtils.emitJson(key, data);
@@ -84,7 +84,7 @@ hadoopUtils.emitJson(key, data);
 
 **iterateLines**
 
-Will read input line by line.
+Will read and process input line by line.
 
 ```
 hadoopUtils.iterateLines(function(data) {  });
@@ -112,7 +112,7 @@ hadoopUtils.iterateKeysWithGroupedValues(function(key, values) { });
 
 **emit**
 
-Emits key and value
+Emits key and value.
 
 ```
 hadoopUtils.emitJson(key, value);
@@ -151,10 +151,10 @@ streamingUtils.iterateLines(function(line) {
     process.exit();
 }).catch(console.error);
 
-function asyncSplit(line, onReady) {
+function asyncSplit(line, callback) {
     var words = line.split(/\s+/);
     setTimeout(function() {
-        onReady(null, words);
+        callback(null, words);
     }, 500);
 }
 
