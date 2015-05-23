@@ -49,9 +49,9 @@ hadoopUtils.iterateJsonLines(function(data) {
 ```
 
 #### iterateKeysWithJsonValues
-1) Reads input line by line. 
-2) Extract key and value from line. 
-3) Apply JSON.parse to value.
+1. Reads input line by line. 
+2. Extract key and value from line. 
+3. Apply JSON.parse to value.
 
 ```
 hadoopUtils.iterateKeysWithJsonValues(function(key, value) {
@@ -61,10 +61,10 @@ hadoopUtils.iterateKeysWithJsonValues(function(key, value) {
 
 
 #### iterateKeysWithGroupedJsonValues
-1) Reads input line by line. 
-2) Extract key and value from line. 
-3) Apply JSON.parse to value.
-4) Groups all values by key.
+1. Reads input line by line. 
+2. Extract key and value from line. 
+3. Apply JSON.parse to value.
+4. Groups all values by key.
 
 ```
 hadoopUtils.iterateKeysWithGroupedJsonValues(function(key, values) {
