@@ -3,7 +3,7 @@
 Hadoop streaming utils for NodeJS
 ---------------------------------
 
-This is not a framework. This is just set of utils to allow writing hadoop jobs easly.
+This is not a framework. This is just a set of utils to allow you writing hadoop jobs easily.
 
 ### SYNOPSYS
 ```
@@ -14,7 +14,7 @@ hadoopUtils.iterateJsonLines(function(line) {
     var words = line.split(/\s+/);
 
     words.forEach(function(word) {
-        hadoopUtils.emitJson(word, 1);
+        hadoopUtils.emitJson(word, 1); // using emitJson instead of emit allows to preserve variable type
     });
 });
 
@@ -24,10 +24,10 @@ var hadoopUtils = require('hadoop-streaming-utils');
 hadoopUtils.iterateKeysWithGroupedJsonValues(function(word, counts) {
     var totalCount = 0;
     counts.forEach(function(cnt) {
-        totalCount += cnt;
+        totalCount += cnt; // no need to parseInt because in reducer we use "emitJson"
     });
 
-    emit(word, totalCount);
+    emitJson(word, totalCount);
 });
 
 // Run (emulate hadoop-streaming behaviour) 
@@ -69,7 +69,12 @@ hadoopUtils.iterateKeysWithGroupedJsonValues(function(key, values) {
 });
 ```
 
-* emitJson
+#### emitJson
+Serializes data to JSON and emits it
+
+```
+hadoopUtils.emitJson(key, data);
+```
 
 ### FUNCTIONS WORKING WITH RAW DATA
 
