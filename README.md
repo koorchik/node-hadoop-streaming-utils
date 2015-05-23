@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/koorchik/node-hadoop-streaming-utils.svg?branch=master)](https://travis-ci.org/koorchik/node-hadoop-streaming-utils)
+
 Hadoop streaming utils for NodeJS
 ---------------------------------
 
