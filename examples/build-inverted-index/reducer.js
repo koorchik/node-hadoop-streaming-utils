@@ -3,9 +3,9 @@
 
 var streamingUtils = require('../../lib/hadoop-streaming-utils');
 var iterateKeysWithGroupedJsonValues = streamingUtils.iterateKeysWithGroupedJsonValues;
-var emit = streamingUtils.emit;
+var emitJson = streamingUtils.emitJson;
 
 iterateKeysWithGroupedJsonValues(function(word, group) {
     group.sort();
-    emit(word, group);
+    emitJson(word, group);
 });

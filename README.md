@@ -14,7 +14,7 @@ hadoopUtils.iterateJsonLines(function(line) {
     var words = line.split(/\s+/);
 
     words.forEach(function(word) {
-        hadoopUtils.emit(word, 1);
+        hadoopUtils.emitJson(word, 1);
     });
 });
 
@@ -69,7 +69,7 @@ hadoopUtils.iterateKeysWithGroupedJsonValues(function(key, values) {
 });
 ```
 
-* emit
+* emitJson
 
 ### FUNCTIONS WORKING WITH RAW DATA
 

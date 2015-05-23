@@ -2,13 +2,13 @@
 'use strict;';
 
 var streamingUtils = require('../../lib/hadoop-streaming-utils');
-var iterateKeysWithGroupedJsonValues = streamingUtils.iterateKeysWithGroupedJsonValues;
+var iterateKeysWithGroupedValues = streamingUtils.iterateKeysWithGroupedValues;
 var emit = streamingUtils.emit;
 
-iterateKeysWithGroupedJsonValues(function(word, counts) {
+iterateKeysWithGroupedValues(function(word, counts) {
     var totalCount = 0;
     counts.forEach(function(cnt) {
-        totalCount += cnt;
+        totalCount += parseInt(cnt, 10);
     });
 
     emit(word, totalCount);

@@ -5,7 +5,7 @@ var Promise = require('bluebird');
 
 var streamingUtils = require('../../lib/hadoop-streaming-utils');
 var iterateLines = streamingUtils.iterateLines;
-var emit = streamingUtils.emit;
+var emitJson = streamingUtils.emitJson;
 
 iterateLines(function(line) {
     return new Promise(function(resolve, reject) {
@@ -14,7 +14,7 @@ iterateLines(function(line) {
         });
     }).then(function(words) {
         words.forEach(function(word) {
-            emit(word, 1);
+            emitJson(word, 1);
         });
     });
 }).then(function() {

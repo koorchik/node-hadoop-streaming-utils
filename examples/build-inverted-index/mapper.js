@@ -3,7 +3,7 @@
 
 var streamingUtils = require('../../lib/hadoop-streaming-utils');
 var iterateJsonLines = streamingUtils.iterateJsonLines;
-var emit = streamingUtils.emit;
+var emitJson = streamingUtils.emitJson;
 
 iterateJsonLines(function(tweet) {
     var words = tweet.text.split(/\s+/);
@@ -15,6 +15,6 @@ iterateJsonLines(function(tweet) {
         if (seenWords[word]) return;
 
         seenWords[word] = true;
-        emit(word, tweet.id);
+        emitJson(word, tweet.id);
     });
 });
