@@ -6,40 +6,27 @@ This is not a framework. This is just set of utils to allow writing hadoop jobs 
 
 ### SYNOPSYS
 ```
+var hadoopUtils = require('hadoop-streaming-utils');
 
+hadoopUtils.iterateJsonLines(function(data) {
+    hadoopUtils.emit();
+});
 
 ```
 
-### FUNCTIONS
+### FUNCTIONS WORKING WITH JSON
 
 * iterateJsonLines
-* iterateLinesWithJsonValues
-* iterateLinesWithGroupedJsonValues
-* iterateLines
+* iterateKeysWithJsonValues
+* iterateKeysWithGroupedJsonValues
 * emit
 
-utils.setup({
-    serializer: function(object) {
-        return str;
-    },
-
-    deserializer: function(str) {
-        return obj;
-    }
-});
-
+### FUNCTIONS WORKING WITH RAW DATA
 
 * iterateLines
-* iterateKeyValueLines
-* iterateKeyGroupedValueLines
+* iterateKeysWithValues
+* iterateKeysGroupedValues
 * emit
-
-* iterateJsonLines
-* iterateKeyJsonValueLines
-* iterateKeyJsonGroupedValueLines
-* emitJson
-
-#### iterateJsonLines
 
 
 
