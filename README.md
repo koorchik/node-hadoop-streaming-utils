@@ -5,7 +5,7 @@ Hadoop streaming utils for NodeJS
 
 A set of utils to allow you writing hadoop jobs easily.
 
-### SYNOPSYS
+### Synopsys
 ```
 // mapper.js (count word example)
 var hadoopUtils = require('hadoop-streaming-utils');
@@ -36,20 +36,20 @@ cat file | node mapper.js | sort -k1,1 | node reducer.js
 
 See more examples in "examples" folder.
 
-### Descriptions
+### Description
 
 There is a set of utils to read and process data line by line. So, next line will be read only after finishing processing previous one. It is easy when your callback is sync. When your callback is async you should return promise from it. Every iterating function returns a promise which will be resolved when all lines were processed. 
 
 ### Functions working with json data
 
-#### iterateJsonLines
+**iterateJsonLines**
 Will read input line by line and will apply JSON.parse to every line.
 
 ```
 hadoopUtils.iterateJsonLines(function(data) {  });
 ```
 
-#### iterateKeysWithJsonValues
+**iterateKeysWithJsonValues**
 1. Reads input line by line. 
 2. Extracts key and value from line. 
 3. Applies JSON.parse to value.
@@ -59,7 +59,7 @@ hadoopUtils.iterateKeysWithJsonValues(function(key, value) { });
 ```
 
 
-#### iterateKeysWithGroupedJsonValues
+**iterateKeysWithGroupedJsonValues**
 1. Reads input line by line. 
 2. Extracts key and value from line. 
 3. Applies JSON.parse to value.
@@ -69,7 +69,7 @@ hadoopUtils.iterateKeysWithJsonValues(function(key, value) { });
 hadoopUtils.iterateKeysWithGroupedJsonValues(function(key, values) { });
 ```
 
-#### emitJson
+**emitJson**
 Serializes data to JSON and emits it
 
 ```
@@ -78,14 +78,14 @@ hadoopUtils.emitJson(key, data);
 
 ### Functions working with raw data
 
-#### iterateLines
+**iterateLines**
 Will read input line by line.
 
 ```
 hadoopUtils.iterateLines(function(data) {  });
 ```
 
-#### iterateKeysWithValues
+**iterateKeysWithValues**
 1. Reads input line by line. 
 2. Extracts key and value from line. 
 
@@ -94,7 +94,7 @@ hadoopUtils.iterateKeysWithValues(function(key, value) { });
 ```
 
 
-#### iterateKeysWithGroupedValues
+**iterateKeysWithGroupedValues**
 1. Reads input line by line. 
 2. Extracts key and value from line. 
 3. Groups all values by key.
@@ -103,14 +103,14 @@ hadoopUtils.iterateKeysWithValues(function(key, value) { });
 hadoopUtils.iterateKeysWithGroupedValues(function(key, values) { });
 ```
 
-#### emit
+**emit**
 Emits key and value
 
 ```
 hadoopUtils.emitJson(key, value);
 ```
 
-#### incrementCounter
+**incrementCounter**
 Updates hadoop counter. 
 
 ```
@@ -151,7 +151,7 @@ function asyncSplit(line, onReady) {
 
 ```
 
-### AUTHOR
+### Author
 koorchik (Viktor Turskyi)
 
 
