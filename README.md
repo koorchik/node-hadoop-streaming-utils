@@ -5,11 +5,9 @@ Hadoop streaming utils for NodeJS
 
 This is not a framework. This is just set of utils to allow writing hadoop jobs easly.
 
-
 ### SYNOPSYS
 ```
 // mapper.js (count word example)
-
 var hadoopUtils = require('hadoop-streaming-utils');
 
 hadoopUtils.iterateJsonLines(function(line) {
@@ -21,7 +19,6 @@ hadoopUtils.iterateJsonLines(function(line) {
 });
 
 // reducer.js
-
 var hadoopUtils = require('hadoop-streaming-utils');
 
 hadoopUtils.iterateKeysWithGroupedJsonValues(function(word, counts) {
@@ -44,31 +41,31 @@ Will read input line by line and will apply JSON.parse to every line.
 
 ```
 hadoopUtils.iterateJsonLines(function(data) {
-
+    // process data here
 });
 ```
 
 #### iterateKeysWithJsonValues
 1. Reads input line by line. 
-2. Extract key and value from line. 
-3. Apply JSON.parse to value.
+2. Extracts key and value from line. 
+3. Applies JSON.parse to value.
 
 ```
 hadoopUtils.iterateKeysWithJsonValues(function(key, value) {
-
+    // process data here
 });
 ```
 
 
 #### iterateKeysWithGroupedJsonValues
 1. Reads input line by line. 
-2. Extract key and value from line. 
-3. Apply JSON.parse to value.
+2. Extracts key and value from line. 
+3. Applies JSON.parse to value.
 4. Groups all values by key.
 
 ```
 hadoopUtils.iterateKeysWithGroupedJsonValues(function(key, values) {
-
+    // process data here
 });
 ```
 
@@ -81,7 +78,6 @@ hadoopUtils.iterateKeysWithGroupedJsonValues(function(key, values) {
 * iterateKeysGroupedValues
 * emit
 * incrementCounter
-
 
 ### ASYNC OPERATIONS
 
