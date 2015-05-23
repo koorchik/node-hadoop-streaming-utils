@@ -14,7 +14,8 @@ hadoopUtils.iterateJsonLines(function(line) {
     var words = line.split(/\s+/);
 
     words.forEach(function(word) {
-        hadoopUtils.emitJson(word, 1); // using emitJson instead of emit allows to preserve variable type
+        // using emitJson instead of emit allows to preserve variable type
+        hadoopUtils.emitJson(word, 1); 
     });
 });
 
@@ -24,10 +25,11 @@ var hadoopUtils = require('hadoop-streaming-utils');
 hadoopUtils.iterateKeysWithGroupedJsonValues(function(word, counts) {
     var totalCount = 0;
     counts.forEach(function(cnt) {
-        totalCount += cnt; // no need to parseInt because in reducer we use "emitJson"
+        // no need to parseInt because in reducer we use "emitJson"
+        totalCount += cnt; 
     });
 
-    emitJson(word, totalCount);
+    hadoopUtils.emitJson(word, totalCount);
 });
 
 // Run (emulate hadoop-streaming behaviour) 
