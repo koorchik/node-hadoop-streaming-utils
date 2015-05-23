@@ -43,6 +43,7 @@ There is a set of utils to read and process data line by line. So, next line wil
 ### Functions working with json data
 
 **iterateJsonLines**
+
 Will read input line by line and will apply JSON.parse to every line.
 
 ```
@@ -50,6 +51,7 @@ hadoopUtils.iterateJsonLines(function(data) {  });
 ```
 
 **iterateKeysWithJsonValues**
+
 1. Reads input line by line. 
 2. Extracts key and value from line. 
 3. Applies JSON.parse to value.
@@ -60,6 +62,7 @@ hadoopUtils.iterateKeysWithJsonValues(function(key, value) { });
 
 
 **iterateKeysWithGroupedJsonValues**
+
 1. Reads input line by line. 
 2. Extracts key and value from line. 
 3. Applies JSON.parse to value.
@@ -70,6 +73,7 @@ hadoopUtils.iterateKeysWithGroupedJsonValues(function(key, values) { });
 ```
 
 **emitJson**
+
 Serializes data to JSON and emits it
 
 ```
@@ -79,6 +83,7 @@ hadoopUtils.emitJson(key, data);
 ### Functions working with raw data
 
 **iterateLines**
+
 Will read input line by line.
 
 ```
@@ -86,6 +91,7 @@ hadoopUtils.iterateLines(function(data) {  });
 ```
 
 **iterateKeysWithValues**
+
 1. Reads input line by line. 
 2. Extracts key and value from line. 
 
@@ -95,6 +101,7 @@ hadoopUtils.iterateKeysWithValues(function(key, value) { });
 
 
 **iterateKeysWithGroupedValues**
+
 1. Reads input line by line. 
 2. Extracts key and value from line. 
 3. Groups all values by key.
@@ -104,6 +111,7 @@ hadoopUtils.iterateKeysWithGroupedValues(function(key, values) { });
 ```
 
 **emit**
+
 Emits key and value
 
 ```
@@ -111,6 +119,7 @@ hadoopUtils.emitJson(key, value);
 ```
 
 **incrementCounter**
+
 Updates hadoop counter. 
 
 ```
